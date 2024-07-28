@@ -1,11 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useEffect, useState } from "react";
 import { Dimensions, Image, Keyboard } from "react-native";
+import Home from "../screen/Home";
 import { theme } from "../theme/default.theme";
-import { AnimatedTabBarBar } from "./styles";
+import { AnimatedTabBarBar, ImgMenu } from "./styles";
 import { RFValue } from "../utils/normalize";
 import { menu } from "../utils/icons";
-import Home from "../screen/Home";
+import Shopping from "../screen/Home";
 
 const Tab = createBottomTabNavigator();
 
@@ -37,7 +38,7 @@ export default function TabRoutes() {
 
   function getWidth() {
     let width = Dimensions.get("window").width;
-    return width / 1;
+    return width / 2;
   }
 
   return (
@@ -64,11 +65,10 @@ export default function TabRoutes() {
           options={{
             tabBarIcon: ({ size, color }) => {
               return (
-                <Image
+                <ImgMenu
                   width={RFValue(size)}
                   height={RFValue(size)}
-                  style={{ width: RFValue(30), height: RFValue(30) }}
-                  source={color === "#FF5A00" ? menu.homeFocus : menu.homeBlur}
+                  source={color === "#6A1A77" ? menu.homeFocus : menu.homeBlur}
                 />
               );
             },
@@ -76,6 +76,26 @@ export default function TabRoutes() {
           listeners={({}) => ({
             focus: () => {
               setTabOffsetValue(0);
+            },
+          })}
+        />
+        <Tab.Screen
+          name="COMPRAR"
+          component={Shopping}
+          options={{
+            tabBarIcon: ({ size, color }) => {
+              return (
+                <ImgMenu
+                  width={RFValue(size)}
+                  height={RFValue(size)}
+                  source={color === "#6A1A77" ? menu.bagFocus : menu.bagBlur}
+                />
+              );
+            },
+          }}
+          listeners={({}) => ({
+            focus: () => {
+              setTabOffsetValue(getWidth() * 1);
             },
           })}
         />

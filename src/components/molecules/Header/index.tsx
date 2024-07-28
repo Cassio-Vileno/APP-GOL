@@ -5,14 +5,19 @@ import { TouchableOpacity } from "react-native";
 import images from "../../../utils/images";
 import { Paragraph } from "../../atoms/Paragraph";
 import { theme } from "../../../theme/default.theme";
+import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../../../hooks/useAuth";
 
-export default function Header(): JSX.Element {
-  const isLoged = false;
+export default function HomeHeader(): JSX.Element {
+  const { signed } = useAuth();
+  const navigation = useNavigation<any>();
   return (
     <Container>
       <LogoImg resizeMode="contain" source={images.logo} />
-      <TouchableOpacity onPress={() => {}}>
-        {!isLoged ? (
+      <TouchableOpacity
+        onPress={() => navigation.navigate(signed ? "Profile" : "LogIn")}
+      >
+        {!signed ? (
           <Paragraph
             fontFamily="Poppins_600SemiBold"
             color={theme.color.NeutralGra}

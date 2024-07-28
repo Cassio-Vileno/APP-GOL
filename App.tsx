@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import {
   useFonts,
   Poppins_300Light,
@@ -8,12 +7,11 @@ import {
   Poppins_600SemiBold,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
-import { Paragraph } from "./src/components/atoms/Paragraph";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import Routes from "./src/routes";
-import AppRoutes from "./src/routes/app.routes";
+import { AuthProvider } from "./src/context/auth.context";
 
 export default function App() {
   let [fontsLoaded, fontError] = useFonts({
@@ -30,9 +28,11 @@ export default function App() {
   return (
     <>
       <NavigationContainer>
-        <SafeAreaProvider>
-          <Routes />
-        </SafeAreaProvider>
+        <AuthProvider>
+          <SafeAreaProvider>
+            <Routes />
+          </SafeAreaProvider>
+        </AuthProvider>
       </NavigationContainer>
       <StatusBar backgroundColor="#ffffff" translucent={false} />
     </>

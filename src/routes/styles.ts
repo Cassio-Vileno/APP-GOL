@@ -13,3 +13,8 @@ export const AnimatedTabBarBar = styled(Animated.View) <TabAnimatedViewProps>`
   position: absolute;
   bottom: ${RFValue(62)}px;
 `;
+
+export const ImgMenu = styled.Image`
+  width: 35px;
+  height: 35px;
+`;

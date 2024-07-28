@@ -16,7 +16,7 @@ export const theme = {
   },
   tabNavigator: {
     activeTintColor: '#FF5E00',
-    inactiveTintColor: '#888888',
+    inactiveTintColor: '##b9b9b9',
     backgroundColor: '#ffffff',
   },
   button: {
