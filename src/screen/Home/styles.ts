@@ -9,5 +9,14 @@ export const Container = styled.View`
 export const Content = styled.ScrollView`
   background-color: ${theme.page.backgroundColor};
   padding-bottom: 40px;
-  padding: 0 0 0 12px;
+  padding: 20px 12px 0 12px;
+`;
+
+export const ContainerIcons = styled.View`
+width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
 `;

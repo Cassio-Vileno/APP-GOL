@@ -25,6 +25,7 @@ export default function TabRoutes() {
       "keyboardDidShow",
       () => setKeyboardVisible(true)
     );
+    console.log(isKeyboardVisible);
     const keyboardDidHideListener = Keyboard.addListener(
       "keyboardDidHide",
       () => setKeyboardVisible(false)
@@ -53,7 +54,8 @@ export default function TabRoutes() {
           tabBarStyle: {
             backgroundColor: theme.tabNavigator.backgroundColor,
             borderTopWidth: 1,
-            height: isKeyboardVisible ? 0 : RFValue(65),
+            display: isKeyboardVisible ? "none" : "flex",
+            height: RFValue(55),
             paddingBottom: RFValue(10),
             elevation: 0,
           },

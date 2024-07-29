@@ -112,7 +112,7 @@ export default function SeveralExcerpts(): JSX.Element {
               )}
             />
           </Row>
-          <Row gap={10}>
+          <Row width={100} gap={10}>
             <Row>
               <Checkbox
                 onChange={(e) => setPromotionalCode(e)}

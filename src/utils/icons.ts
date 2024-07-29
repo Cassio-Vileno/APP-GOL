@@ -18,3 +18,12 @@ export const menu = {
   bagFocus: require('../assets/icons/bagFocus.png'),
   bagBlur: require('../assets/icons/bagBlur.png'),
 };
+
+export const iconHome = {
+  airplane: require('../assets/icons/airplane.png'),
+  checkIn: require('../assets/icons/check-in.png'),
+  lupa: require('../assets/icons/lupa.png'),
+  oferta: require('../assets/icons/oferta.png'),
+  clock: require('../assets/icons/relogio.png'),
+  cash: require('../assets/icons/dinheiro.png'),
+};

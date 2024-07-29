@@ -11,10 +11,10 @@ export const AnimatedTabBarBar = styled(Animated.View) <TabAnimatedViewProps>`
   background-color: ${theme.tabNavigator.activeTintColor};
   transform: translate(${props => props.tabOffsetValue}px);
   position: absolute;
-  bottom: ${RFValue(62)}px;
+  bottom: ${RFValue(55)}px;
 `;
 
 export const ImgMenu = styled.Image`
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 `;
