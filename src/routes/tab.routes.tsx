@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useEffect, useState } from "react";
 import { Dimensions, Image, Keyboard } from "react-native";
-import Home from "../screen/Home";
 import { theme } from "../theme/default.theme";
 import { AnimatedTabBarBar, ImgMenu } from "./styles";
 import { RFValue } from "../utils/normalize";
 import { menu } from "../utils/icons";
-import Shopping from "../screen/Home";
+import Shopping from "../screen/Shopping";
+import Home from "../screen/Home";
 
 const Tab = createBottomTabNavigator();
 
@@ -68,7 +68,7 @@ export default function TabRoutes() {
                 <ImgMenu
                   width={RFValue(size)}
                   height={RFValue(size)}
-                  source={color === "#6A1A77" ? menu.homeFocus : menu.homeBlur}
+                  source={color === "#FF5E00" ? menu.homeFocus : menu.homeBlur}
                 />
               );
             },
@@ -88,7 +88,7 @@ export default function TabRoutes() {
                 <ImgMenu
                   width={RFValue(size)}
                   height={RFValue(size)}
-                  source={color === "#6A1A77" ? menu.bagFocus : menu.bagBlur}
+                  source={color === "#FF5E00" ? menu.bagFocus : menu.bagBlur}
                 />
               );
             },

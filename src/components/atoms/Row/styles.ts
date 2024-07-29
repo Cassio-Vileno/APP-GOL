@@ -27,4 +27,8 @@ export const Container = styled.View<RowProps>`
   ${props => (props?.pb ? `padding-bottom: ${props?.pb}px;` : '')}
   ${props => (props?.pl ? `padding-left: ${props?.pl}px;` : '')}
   ${props => (props?.pr ? `padding-right: ${props?.pr}px;` : '')}
+  ${props => (props?.gap ? `gap: ${props?.gap}px;` : '')}
+
+  flex-direction: ${props => props.fd || 'colun'};
+  justify-content: ${props => props.jc || 'inherit'};
 `;

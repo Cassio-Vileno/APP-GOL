@@ -8,7 +8,7 @@ import { theme } from "../../../theme/default.theme";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../../hooks/useAuth";
 
-export default function HomeHeader(): JSX.Element {
+export default function Header(): JSX.Element {
   const { signed } = useAuth();
   const navigation = useNavigation<any>();
   return (

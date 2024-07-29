@@ -9,5 +9,12 @@ export const Container = styled.View`
 export const Content = styled.ScrollView`
   background-color: ${theme.page.backgroundColor};
   padding-bottom: 40px;
-  padding: 0 0 0 12px;
+`;
+
+export const ContainerForm = styled.View`
+  width: 100%;
+  padding: 0 12px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
 `;

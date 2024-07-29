@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Container, Content } from "./styles";
 
-import HomeHeader from "../../components/molecules/Header";
+import Header from "../../components/molecules/Header";
 
-export default function Shopping(): JSX.Element {
+export default function Home(): JSX.Element {
   return (
     <Container>
-      <HomeHeader />
+      <Header />
 
       <Content></Content>
     </Container>

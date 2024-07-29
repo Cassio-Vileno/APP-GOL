@@ -12,7 +12,10 @@ export const theme = {
 
     pink100: "#F20047",
 
-    Purple100: "#e65705"
+    Orange100: "#e65705",
+    OrangeBlur: "#ff5e007e",
+
+    white: "#fff",
   },
   tabNavigator: {
     activeTintColor: '#FF5E00',
@@ -58,7 +61,7 @@ export const theme = {
     borderRadius: 6,
     backgroundColor: '#F6F7FA',
     errorColor: '#ff0000',
-    size: 13,
+    size: 12,
     textColor: '#000',
   },
   page: {

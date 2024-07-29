@@ -14,7 +14,11 @@ export type RowProps = {
   pb?: number;
   pl?: number;
   pr?: number;
+
   width?: number;
+  gap?: number;
+  jc?: "center" | "space-between" | "space-around" | "flex-start" | "flex-end";
+  fd?: "column" | "column-reverse" | "row" | "row-reverse";
 
   children?: ReactNode;
 };

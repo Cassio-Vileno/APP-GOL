@@ -7,6 +7,9 @@ export const icons = {
   profile: require('../assets/icons/profile.png'),
   document: require('../assets/icons/document.png'),
   plate: require('../assets/icons/plate.png'),
+  children: require('../assets/icons/children.png'),
+  baby: require('../assets/icons/baby.png'),
+  adult: require('../assets/icons/adult.png'),
 }
 
 export const menu = {
