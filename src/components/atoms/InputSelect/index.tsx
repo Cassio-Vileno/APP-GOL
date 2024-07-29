@@ -45,6 +45,10 @@ export default function InputSelect({
     setVisible(false);
   };
 
+  const close = () => {
+    setVisible(false);
+  };
+
   useEffect(() => {
     if (value) {
       items.map((item) => {

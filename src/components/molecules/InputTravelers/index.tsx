@@ -11,11 +11,8 @@ import {
 import { theme } from "../../../theme/default.theme";
 import { Paragraph } from "../../atoms/Paragraph";
 import { Icon } from "../../atoms/Icon";
-import ModalCitys from "../ModalCitys";
 import Row from "../../atoms/Row";
 import ModalInput from "../ModalInput";
-import CalendarComponent from "../../atoms/Calendar";
-import { DateMaskBR } from "../../../utils/mask";
 import ButtonPrimary from "../../atoms/ButtonPrimary";
 import { icons } from "../../../utils/icons";
 

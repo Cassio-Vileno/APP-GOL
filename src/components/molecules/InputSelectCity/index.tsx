@@ -7,12 +7,6 @@ import { Icon } from "../../atoms/Icon";
 import ModalCitys from "../ModalCitys";
 import Row from "../../atoms/Row";
 
-type Item = {
-  id: string;
-  city: string;
-  state: string;
-};
-
 export type FormFieldSelectProps = TextInputProps & {
   placeholder: string;
   value?: string;

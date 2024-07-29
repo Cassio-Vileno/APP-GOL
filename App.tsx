@@ -12,6 +12,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import Routes from "./src/routes";
 import { AuthProvider } from "./src/context/auth.context";
+import { ThemeContext } from "styled-components";
 
 export default function App() {
   let [fontsLoaded, fontError] = useFonts({
@@ -27,13 +28,16 @@ export default function App() {
   }
   return (
     <>
-      <NavigationContainer>
-        <AuthProvider>
-          <SafeAreaProvider>
-            <Routes />
-          </SafeAreaProvider>
-        </AuthProvider>
-      </NavigationContainer>
+      <ThemeContext.Provider value={ThemeContext}>
+        <NavigationContainer>
+          <AuthProvider>
+            <SafeAreaProvider>
+              <Routes />
+            </SafeAreaProvider>
+          </AuthProvider>
+        </NavigationContainer>
+      </ThemeContext.Provider>
+
       <StatusBar backgroundColor="#ffffff" translucent={false} />
     </>
   );
