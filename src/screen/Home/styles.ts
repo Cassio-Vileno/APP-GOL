@@ -20,3 +20,13 @@ width: 100%;
   flex-wrap: wrap;
   gap: 10px;
 `;
+
+export const BannerLead = styled.View`
+ width: 100%;
+ flex: 1;
+`;
+
+export const ImgBanner = styled.Image`
+ width: 100%;
+ max-height: 250px ;
+`;

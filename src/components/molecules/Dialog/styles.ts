@@ -4,7 +4,7 @@ import { RFValue } from '../../../utils/normalize';
 
 export const Overlay = styled.TouchableOpacity`
   flex: 1;
-  background-color: rgba(98, 42, 147, 0.65);
+  background-color: ${theme.color.OrangeBlur};
   justify-content: center;
   align-items: center;
 `;

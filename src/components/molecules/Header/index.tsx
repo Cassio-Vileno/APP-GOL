@@ -14,9 +14,7 @@ export default function Header(): JSX.Element {
   return (
     <Container>
       <LogoImg resizeMode="contain" source={images.logo} />
-      <TouchableOpacity
-        onPress={() => navigation.navigate(signed ? "Profile" : "LogIn")}
-      >
+      <TouchableOpacity onPress={() => navigation.navigate("SUACONTA")}>
         {!signed ? (
           <Paragraph
             fontFamily="Poppins_600SemiBold"

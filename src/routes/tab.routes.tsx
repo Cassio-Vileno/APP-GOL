@@ -7,6 +7,9 @@ import { RFValue } from "../utils/normalize";
 import { menu } from "../utils/icons";
 import Shopping from "../screen/Shopping";
 import Home from "../screen/Home";
+import { useAuth } from "../hooks/useAuth";
+import Profile from "../screen/Profile";
+import Login from "../screen/Login";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,8 +19,8 @@ export type TabAnimatedViewProps = {
 };
 
 export default function TabRoutes() {
+  const { signed } = useAuth();
   const [tabOffsetValue, setTabOffsetValue] = useState<number>(0);
-
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
   useEffect(() => {
@@ -25,7 +28,6 @@ export default function TabRoutes() {
       "keyboardDidShow",
       () => setKeyboardVisible(true)
     );
-    console.log(isKeyboardVisible);
     const keyboardDidHideListener = Keyboard.addListener(
       "keyboardDidHide",
       () => setKeyboardVisible(false)
@@ -39,7 +41,7 @@ export default function TabRoutes() {
 
   function getWidth() {
     let width = Dimensions.get("window").width;
-    return width / 2;
+    return width / 3;
   }
 
   return (
@@ -98,6 +100,26 @@ export default function TabRoutes() {
           listeners={({}) => ({
             focus: () => {
               setTabOffsetValue(getWidth() * 1);
+            },
+          })}
+        />
+        <Tab.Screen
+          name="SUACONTA"
+          component={signed ? Profile : Login}
+          options={{
+            tabBarIcon: ({ size, color }) => {
+              return (
+                <ImgMenu
+                  width={RFValue(size)}
+                  height={RFValue(size)}
+                  source={color === "#FF5E00" ? menu.userFocus : menu.userBlur}
+                />
+              );
+            },
+          }}
+          listeners={({}) => ({
+            focus: () => {
+              setTabOffsetValue(getWidth() * 2);
             },
           })}
         />

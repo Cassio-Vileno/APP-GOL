@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         name: response.how_be_called,
       });
       setToken(response.token);
-      navigation.navigate("Home");
+      navigation.navigate("HOME");
     } catch (err: any) {
       console.log(err.response?.data);
       openDialog({
@@ -66,6 +66,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const getSession = useCallback(async () => {
     const userData = await AsyncStorage.getItem("@Gol:user");
+    const tokenData = await AsyncStorage.getItem("@Gol:token");
 
     if (userData) {
       const { response, timestamp } = JSON.parse(userData);
@@ -78,6 +79,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         return;
       }
       setUser(response);
+    }
+    if (tokenData) {
+      setToken(tokenData);
     }
   }, []);
 

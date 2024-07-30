@@ -93,9 +93,6 @@ export default function Profile() {
   ];
   return (
     <Container>
-      <ContainerHeader>
-        <HeaderShow title="Meus dados" />
-      </ContainerHeader>
       <Content>
         <ContainerHeader>
           <Paragraph size={24}>

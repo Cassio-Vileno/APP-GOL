@@ -46,7 +46,6 @@ export default function Login(): JSX.Element {
   return (
     <Container>
       <Content>
-        <HeaderShow />
         <Image resizeMode="contain" source={images.logo} />
         <Row mt={0}>
           <Controller

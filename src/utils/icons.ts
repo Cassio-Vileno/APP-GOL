@@ -17,6 +17,8 @@ export const menu = {
   homeFocus: require('../assets/icons/homeFocus.png'),
   bagFocus: require('../assets/icons/bagFocus.png'),
   bagBlur: require('../assets/icons/bagBlur.png'),
+  userBlur: require('../assets/icons/userBlur.png'),
+  userFocus: require('../assets/icons/userFocus.png'),
 };
 
 export const iconHome = {
