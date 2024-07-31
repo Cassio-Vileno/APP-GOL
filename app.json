@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "app-gol",
+    "name": "Desafio Gol",
     "slug": "app-gol",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,10 +18,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.cassiovileno.appgol"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "37a57b82-d13e-4780-aab8-a83381f69d76"
+      }
+    },
+    "owner": "cassiovileno"
   }
 }
