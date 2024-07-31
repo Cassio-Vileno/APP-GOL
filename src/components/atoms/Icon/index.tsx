@@ -1,6 +1,5 @@
 import React from "react";
 import { Container } from "./styles";
-import { Feather } from "@expo/vector-icons";
 
 export type IconProps = {
   name: string;

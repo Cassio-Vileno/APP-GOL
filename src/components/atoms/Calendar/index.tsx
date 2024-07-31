@@ -1,8 +1,7 @@
 import React from "react";
 import { Calendar, LocaleConfig } from "react-native-calendars";
-import { theme } from "../../../theme/default.theme";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Paragraph } from "../Paragraph";
+import { theme } from "../../../theme/default.theme";
 import { Icon } from "../Icon";
 
 LocaleConfig.locales["pt-br"] = {

@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { View, TextInputProps } from "react-native";
-import { Error, Container } from "./styles";
+import React, { useState } from "react";
+import { TextInputProps, View } from "react-native";
 import { theme } from "../../../theme/default.theme";
-import { Paragraph } from "../../atoms/Paragraph";
-import { Icon } from "../../atoms/Icon";
-import ModalCitys from "../ModalCitys";
-import Row from "../../atoms/Row";
-import ModalInput from "../ModalInput";
-import CalendarComponent from "../../atoms/Calendar";
 import { DateMaskBR } from "../../../utils/mask";
-import ButtonPrimary from "../../atoms/ButtonPrimary";
+import CalendarComponent from "../../atoms/Calendar";
+import { Icon } from "../../atoms/Icon";
+import { Paragraph } from "../../atoms/Paragraph";
+import Row from "../../atoms/Row";
+import ButtonPrimary from "../../molecules/ButtonPrimary";
+import ModalInput from "../ModalInput";
+import { Container, Error } from "./styles";
 
 export type FormFieldSelectProps = TextInputProps & {
   placeholder: string;

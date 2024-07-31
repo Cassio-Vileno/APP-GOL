@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextInputProps } from "react-native";
 import { theme } from "../../../theme/default.theme";
+import { Icon } from "../../atoms/Icon";
 import {
   ButtonShowOrHide,
   Container,
@@ -8,7 +9,6 @@ import {
   Error,
   PasswordInput,
 } from "./styles";
-import { Icon } from "../../atoms/Icon";
 
 export type InputPasswordProps = TextInputProps & {
   error?: any;

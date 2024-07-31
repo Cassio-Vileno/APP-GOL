@@ -3,16 +3,16 @@ import { Controller, useForm } from "react-hook-form";
 
 import { Container, ContainerForm, Content } from "./styles";
 
-import Row from "../../components/atoms/Row";
-import InputSelectCity from "../../components/molecules/InputSelectCity";
-import InputCalendar from "../../components/molecules/InputCalendar";
-import InputTravelers from "../../components/molecules/InputTravelers";
-import ButtonPrimary from "../../components/atoms/ButtonPrimary";
+import ButtonPrimary from "../../components/molecules/ButtonPrimary";
 import Checkbox from "../../components/atoms/Checkbox";
-import InputText from "../../components/molecules/InputText";
+import Row from "../../components/atoms/Row";
+import InputCalendar from "../../components/molecules/InputCalendar";
 import InputSelect from "../../components/molecules/InputSelect";
-import { LocaleService, LocaleType } from "../../services/locale.service";
+import InputSelectCity from "../../components/molecules/InputSelectCity";
+import InputText from "../../components/molecules/InputText";
+import InputTravelers from "../../components/molecules/InputTravelers";
 import useDebounce from "../../hooks/useDebounce";
+import { LocaleService, LocaleType } from "../../services/locale.service";
 
 export default function RoundTrip(): JSX.Element {
   const [promotionalCode, setPromotionalCode] = useState(false);

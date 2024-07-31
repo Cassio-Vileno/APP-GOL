@@ -1,7 +1,7 @@
 import React from "react";
-import { TouchableOpacityProps, ActivityIndicator } from "react-native";
+import { ActivityIndicator, TouchableOpacityProps } from "react-native";
 import { theme } from "../../../theme/default.theme";
-import { Paragraph } from "../Paragraph";
+import { Paragraph } from "../../atoms/Paragraph";
 import { Container } from "./styles";
 
 export type ButtonProps = TouchableOpacityProps & {

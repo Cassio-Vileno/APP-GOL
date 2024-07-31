@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { theme } from "../../../theme/default.theme";
 import { Paragraph } from "../Paragraph";
 import { CheckboxContainer, CheckboxInner, Container } from "./styles";
-import { theme } from "../../../theme/default.theme";
 
 export type CheckboxProps = {
   onChange: (value: boolean) => void;

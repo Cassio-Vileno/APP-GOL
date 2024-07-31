@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInputProps } from "react-native";
 import { theme } from "../../../theme/default.theme";
-import { ZipCode, Error, ZipcodeIcon } from "./styles";
+import { Error, ZipCode } from "./styles";
 
 export type InputProps = TextInputProps & {
   error: any;

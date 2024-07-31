@@ -1,15 +1,15 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useEffect, useState } from "react";
-import { Dimensions, Image, Keyboard } from "react-native";
-import { theme } from "../theme/default.theme";
-import { AnimatedTabBarBar, ImgMenu } from "./styles";
-import { RFValue } from "../utils/normalize";
-import { menu } from "../utils/icons";
-import Shopping from "../screen/Shopping";
-import Home from "../screen/Home";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Dimensions, Keyboard } from "react-native";
 import { useAuth } from "../hooks/useAuth";
-import Profile from "../screen/Profile";
+import Home from "../screen/Home";
 import Login from "../screen/Login";
+import Profile from "../screen/Profile";
+import Shopping from "../screen/Shopping";
+import { theme } from "../theme/default.theme";
+import { menu } from "../utils/icons";
+import { RFValue } from "../utils/normalize";
+import { AnimatedTabBarBar, ImgMenu } from "./styles";
 
 const Tab = createBottomTabNavigator();
 

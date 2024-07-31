@@ -3,23 +3,18 @@ import { Controller, useForm } from "react-hook-form";
 
 import { ButtonCheckIn, Container, ContainerForm, Content } from "./styles";
 
-import Row from "../../components/atoms/Row";
-import InputSelectCity from "../../components/molecules/InputSelectCity";
-import InputCalendar from "../../components/molecules/InputCalendar";
-import InputTravelers from "../../components/molecules/InputTravelers";
-import ButtonPrimary from "../../components/atoms/ButtonPrimary";
-import Checkbox from "../../components/atoms/Checkbox";
-import InputText from "../../components/molecules/InputText";
-import InputSelect from "../../components/molecules/InputSelect";
-import { LocaleService, LocaleType } from "../../services/locale.service";
-import useDebounce from "../../hooks/useDebounce";
-import HeaderShow from "../../components/molecules/HeaderShow";
 import { Paragraph } from "../../components/atoms/Paragraph";
+import Row from "../../components/atoms/Row";
+import ButtonPrimary from "../../components/molecules/ButtonPrimary";
+import HeaderShow from "../../components/molecules/HeaderShow";
+import InputSelect from "../../components/molecules/InputSelect";
+import InputSelectCity from "../../components/molecules/InputSelectCity";
+import InputText from "../../components/molecules/InputText";
+import useDebounce from "../../hooks/useDebounce";
+import { LocaleService, LocaleType } from "../../services/locale.service";
 import { theme } from "../../theme/default.theme";
 
 export default function CheckIn(): JSX.Element {
-  const [promotionalCode, setPromotionalCode] = useState(false);
-  const [stopover, setStopover] = useState(false);
   const [searchCity, setSearchCity] = useState("");
   const [locale, setLocale] = useState<LocaleType[]>([]);
   const [inputName, setInputName] = useState("1");

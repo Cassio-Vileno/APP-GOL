@@ -1,18 +1,15 @@
 import React from "react";
 import { Modal, ModalProps } from "react-native";
-import ButtonPrimary from "../../atoms/ButtonPrimary";
+import { theme } from "../../../theme/default.theme";
+import ButtonPrimary from "../../molecules/ButtonPrimary";
 import {
   ButtonContainer,
-  Close,
   Container,
   Content,
   Overlay,
   Subtitle,
   Title,
 } from "./styles";
-import { Icon } from "../../atoms/Icon";
-import { useNavigation } from "@react-navigation/native";
-import { theme } from "../../../theme/default.theme";
 
 type DialogProps = ModalProps & {
   visible?: boolean;

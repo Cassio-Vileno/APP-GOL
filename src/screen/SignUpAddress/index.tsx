@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import ButtonPrimary from "../../components/atoms/ButtonPrimary";
+import ButtonPrimary from "../../components/molecules/ButtonPrimary";
 import InputText from "../../components/molecules/InputText";
 import Row from "../../components/atoms/Row";
 import { Container, ContainerButton, Content, ContentHeader } from "./styles";

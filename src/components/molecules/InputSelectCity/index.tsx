@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, TextInputProps } from "react-native";
-import { Error, Container } from "./styles";
-import { theme } from "../../../theme/default.theme";
-import { Paragraph } from "../../atoms/Paragraph";
-import { Icon } from "../../atoms/Icon";
-import ModalCitys from "../ModalCitys";
-import Row from "../../atoms/Row";
+import { TextInputProps, View } from "react-native";
 import { LocaleType } from "../../../services/locale.service";
+import { theme } from "../../../theme/default.theme";
+import { Icon } from "../../atoms/Icon";
+import { Paragraph } from "../../atoms/Paragraph";
+import Row from "../../atoms/Row";
+import ModalCitys from "../ModalCitys";
+import { Container, Error } from "./styles";
 
 export type FormFieldSelectProps = TextInputProps & {
   placeholder: string;

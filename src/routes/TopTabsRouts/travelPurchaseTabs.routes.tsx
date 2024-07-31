@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { theme } from "../../theme/default.theme";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Paragraph } from "../../components/atoms/Paragraph";
+import { theme } from "../../theme/default.theme";
 import { RFValue } from "../../utils/normalize";
 
-import RoundTrip from "../../screen/RoundTrip";
 import AnExcerpt from "../../screen/AnExcerpt";
+import RoundTrip from "../../screen/RoundTrip";
 import SeveralExcerpts from "../../screen/SeveralExcerpts";
-import { ImageBackground } from "react-native";
 
 const Tab = createMaterialTopTabNavigator();
 

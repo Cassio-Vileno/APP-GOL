@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Row from "../../components/atoms/Row";
+import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 
 import { View } from "react-native";
