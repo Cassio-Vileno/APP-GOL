@@ -1,12 +1,12 @@
 import React from "react";
-import { LogoImg, Container, Online } from "./styles";
-import { Icon } from "../../atoms/Icon";
-import { TouchableOpacity } from "react-native";
-import images from "../../../utils/images";
-import { Paragraph } from "../../atoms/Paragraph";
-import { theme } from "../../../theme/default.theme";
 import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native";
 import { useAuth } from "../../../hooks/useAuth";
+import { theme } from "../../../theme/default.theme";
+import images from "../../../utils/images";
+import { Icon } from "../../atoms/Icon";
+import { Paragraph } from "../../atoms/Paragraph";
+import { Container, LogoImg } from "./styles";
 
 export default function Header(): JSX.Element {
   const { signed } = useAuth();

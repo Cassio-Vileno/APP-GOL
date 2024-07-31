@@ -15,7 +15,7 @@ import images from "../../utils/images";
 import { Paragraph } from "../../components/atoms/Paragraph";
 import Row from "../../components/atoms/Row";
 import { theme } from "../../theme/default.theme";
-import ButtonPrimary from "../../components/atoms/ButtonPrimary";
+import ButtonPrimary from "../../components/molecules/ButtonPrimary";
 
 export default function Home(): JSX.Element {
   const navigation = useNavigation<any>();

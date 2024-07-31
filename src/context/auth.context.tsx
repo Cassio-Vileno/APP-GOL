@@ -1,10 +1,14 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect } from "react";
-import { useCallback } from "react";
-import AuthService, { Credentials } from "../services/auth.service";
-import { useDialog } from "../hooks/useDialog";
 import { useNavigation } from "@react-navigation/native";
+import { useDialog } from "../hooks/useDialog";
+import AuthService, { Credentials } from "../services/auth.service";
 
 type AuthContextData = {
   signed: boolean;

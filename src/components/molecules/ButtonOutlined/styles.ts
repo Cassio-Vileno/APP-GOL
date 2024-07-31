@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { theme } from '../../../theme/default.theme';
 import { RFValue } from '../../../utils/normalize';
-import { Paragraph } from '../Paragraph';
+import { Paragraph } from '../../atoms/Paragraph';
 
 interface ButtonOutlinedProps {
   width?: string;

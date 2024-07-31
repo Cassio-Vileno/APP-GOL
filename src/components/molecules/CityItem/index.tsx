@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Container, Content, ImageCity } from "./styles";
+import React from "react";
 import { Paragraph } from "../../atoms/Paragraph";
+import { Container, Content, ImageCity } from "./styles";
 
 type CityItemProps = {
   name: string;

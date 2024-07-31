@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { ButtonGhostProps } from '.';
 import { theme } from '../../../theme/default.theme';
 import { RFValue } from '../../../utils/normalize';
-import { Paragraph } from '../Paragraph';
+import { Paragraph } from '../../atoms/Paragraph';
 
 export const Container = styled.TouchableOpacity<ButtonGhostProps>`
   width: ${props => props.width || theme.button.width};

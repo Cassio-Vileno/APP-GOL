@@ -1,8 +1,8 @@
 import React from "react";
-import { Container, Content, Overlay, Textcontent } from "./styles";
+import { theme } from "../../../theme/default.theme";
 import { Paragraph } from "../../atoms/Paragraph";
 import Row from "../../atoms/Row";
-import { theme } from "../../../theme/default.theme";
+import { Container, Content } from "./styles";
 
 type CardBlogProps = {
   title: string;

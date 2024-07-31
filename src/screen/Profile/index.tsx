@@ -1,22 +1,22 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import { Icon } from "../../components/atoms/Icon";
+import { Paragraph } from "../../components/atoms/Paragraph";
+import Row from "../../components/atoms/Row";
+import { useAuth } from "../../hooks/useAuth";
+import { useDialog } from "../../hooks/useDialog";
+import { theme } from "../../theme/default.theme";
+import { CONTEXT_DIALOG_MESSAGE } from "../../utils/constants";
+import { iconsProfile } from "../../utils/icons";
 import {
   AccountItem,
   Container,
-  Label,
-  IconItem,
-  IconContainer,
   ContainerHeader,
   Content,
+  IconContainer,
+  IconItem,
+  Label,
 } from "./styles";
-import Row from "../../components/atoms/Row";
-import { useDialog } from "../../hooks/useDialog";
-import { useNavigation } from "@react-navigation/native";
-import { CONTEXT_DIALOG_MESSAGE } from "../../utils/constants";
-import { useAuth } from "../../hooks/useAuth";
-import { theme } from "../../theme/default.theme";
-import { icons, iconsProfile } from "../../utils/icons";
-import { Paragraph } from "../../components/atoms/Paragraph";
-import { Icon } from "../../components/atoms/Icon";
 
 export default function Profile() {
   const { user, signOut } = useAuth();

@@ -1,13 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { ButtonGhost } from "../../components/atoms/ButtonGhost";
-import ButtonPrimary from "../../components/atoms/ButtonPrimary";
-import InputEmail from "../../components/molecules/InputEmail";
-import InputPassword from "../../components/molecules/InputPassword";
+import { ButtonGhost } from "../../components/molecules/ButtonGhost";
+import ButtonPrimary from "../../components/molecules/ButtonPrimary";
 import { Paragraph } from "../../components/atoms/Paragraph";
 import Row from "../../components/atoms/Row";
+import InputEmail from "../../components/molecules/InputEmail";
+import InputPassword from "../../components/molecules/InputPassword";
 
+import { Icon } from "../../components/atoms/Icon";
+import { useAuth } from "../../hooks/useAuth";
+import { theme } from "../../theme/default.theme";
 import images from "../../utils/images";
 import {
   ButtonLoginWidth,
@@ -16,10 +19,6 @@ import {
   Content,
   Image,
 } from "./styles";
-import { theme } from "../../theme/default.theme";
-import HeaderShow from "../../components/molecules/HeaderShow";
-import { Icon } from "../../components/atoms/Icon";
-import { useAuth } from "../../hooks/useAuth";
 
 export default function Login(): JSX.Element {
   const navigation = useNavigation<any>();

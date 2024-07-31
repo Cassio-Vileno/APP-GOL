@@ -1,12 +1,12 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
+import { Modal } from "react-native";
 import {
-  Overlay,
   ContainerModal,
   ContentModal,
   DownBar,
   DownBarContainer,
+  Overlay,
 } from "./styles";
-import { Modal } from "react-native";
 
 type ModalInputProps = {
   children: ReactNode;

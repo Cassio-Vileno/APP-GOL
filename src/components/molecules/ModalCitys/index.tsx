@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Modal } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
+import { Paragraph } from "../../atoms/Paragraph";
+import SearchBar from "../../atoms/SearchBar";
+import CityItem from "../CityItem";
 import {
-  Container,
-  Overlay,
   ContainerModal,
   ContentModal,
-  SearchBarContainer,
   DownBar,
   DownBarContainer,
   LineSeparator,
+  Overlay,
+  SearchBarContainer,
 } from "./styles";
-import { Paragraph } from "../../atoms/Paragraph";
-import { FlatList } from "react-native-gesture-handler";
-import { Modal } from "react-native";
-import SearchBar from "../../atoms/SearchBar";
-import CityItem from "../CityItem";
 
-import { LocaleService, LocaleType } from "../../../services/locale.service";
+import { LocaleType } from "../../../services/locale.service";
 
 type ModalCitysProps = {
   isVisible: boolean;

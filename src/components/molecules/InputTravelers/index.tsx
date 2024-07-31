@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { View, TextInputProps, Image } from "react-native";
+import React, { useState } from "react";
+import { TextInputProps, View } from "react-native";
+import { theme } from "../../../theme/default.theme";
+import { icons } from "../../../utils/icons";
+import { Icon } from "../../atoms/Icon";
+import { Paragraph } from "../../atoms/Paragraph";
+import Row from "../../atoms/Row";
+import ButtonPrimary from "../../molecules/ButtonPrimary";
+import ModalInput from "../ModalInput";
 import {
-  Error,
-  Container,
-  ItemTravelers,
-  IconTravelers,
   ButtonCounter,
+  Container,
+  Error,
+  IconTravelers,
+  ItemTravelers,
   ItemTravelersContent,
 } from "./styles";
-import { theme } from "../../../theme/default.theme";
-import { Paragraph } from "../../atoms/Paragraph";
-import { Icon } from "../../atoms/Icon";
-import Row from "../../atoms/Row";
-import ModalInput from "../ModalInput";
-import ButtonPrimary from "../../atoms/ButtonPrimary";
-import { icons } from "../../../utils/icons";
 
 export type FormFieldSelectProps = TextInputProps & {
   placeholder: string;

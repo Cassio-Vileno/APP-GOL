@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { theme } from "../../theme/default.theme";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Paragraph } from "../../components/atoms/Paragraph";
+import { theme } from "../../theme/default.theme";
 import { RFValue } from "../../utils/normalize";
 
 import AllPromotionsList from "../../screen/AllPromotionsList";
-import NationalPromotiosList from "../../screen/NationalPromotiosList";
 import InternationalPromotionsList from "../../screen/InternationalPromotionsList";
+import NationalPromotiosList from "../../screen/NationalPromotiosList";
 
 const Tab = createMaterialTopTabNavigator();
 

@@ -1,13 +1,13 @@
-import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screen/Home";
 
-import TabRoutes from "./tab.routes";
+import CheckIn from "../screen/CheckIn";
 import Login from "../screen/Login";
 import Profile from "../screen/Profile";
 import Promotion from "../screen/Promotion";
-import CheckIn from "../screen/CheckIn";
 import SignUpAddress from "../screen/SignUpAddress";
+import TabRoutes from "./tab.routes";
 
 const AppStack = createStackNavigator();
 

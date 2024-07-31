@@ -2,7 +2,6 @@ import React from "react";
 import { TextInputProps } from "react-native";
 import { theme } from "../../../theme/default.theme";
 import { Container, Error } from "./styles";
-import { Paragraph } from "../Paragraph";
 
 export type InputProps = TextInputProps & {
   error: any;
