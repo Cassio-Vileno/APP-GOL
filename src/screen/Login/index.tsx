@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { ButtonGhost } from "../../components/atoms/ButtonGhost";
 import ButtonPrimary from "../../components/atoms/ButtonPrimary";
-import InputEmail from "../../components/atoms/InputEmail";
-import InputPassword from "../../components/atoms/InputPassword";
+import InputEmail from "../../components/molecules/InputEmail";
+import InputPassword from "../../components/molecules/InputPassword";
 import { Paragraph } from "../../components/atoms/Paragraph";
 import Row from "../../components/atoms/Row";
 

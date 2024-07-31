@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  Modal,
   FlatList,
+  Modal,
+  Text,
   TextInputProps,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { Content, Error, Container, Overlay } from "./styles";
 import { theme } from "../../../theme/default.theme";
-import { Icon } from "../Icon";
-import { Paragraph } from "../Paragraph";
+import { Icon } from "../../atoms/Icon";
+import { Paragraph } from "../../atoms/Paragraph";
+import { Container, Error, Overlay } from "./styles";
 
 type Item = {
   label: string;

@@ -1,7 +1,7 @@
-import { theme } from './../../../theme/default.theme';
 import styled from 'styled-components/native';
-import { Icon } from '../Icon';
 import { RFValue } from '../../../utils/normalize';
+import { Icon } from '../../atoms/Icon';
+import { theme } from './../../../theme/default.theme';
 
 export const Content = styled.View`  
   flex-direction: row;

@@ -1,16 +1,14 @@
 import React, { useState } from "react";
+import { TextInputProps } from "react-native";
+import { theme } from "../../../theme/default.theme";
 import {
   ButtonShowOrHide,
   Container,
   Content,
   Error,
   PasswordInput,
-  ShowOrHideText,
 } from "./styles";
-import { TextInputProps } from "react-native";
-import { theme } from "../../../theme/default.theme";
-import { Paragraph } from "../Paragraph";
-import { Icon } from "../Icon";
+import { Icon } from "../../atoms/Icon";
 
 export type InputPasswordProps = TextInputProps & {
   error?: any;
