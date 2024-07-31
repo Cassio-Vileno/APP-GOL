@@ -35,8 +35,8 @@ export default function ModalCitys({
   value,
   ...rest
 }: ModalCitysProps): JSX.Element {
-  const handleLocation = ({ city, state, id }: any) => {
-    setLocation({ city, state, id });
+  const handleLocation = ({ city, iata, state, id }: any) => {
+    setLocation({ city, iata, state, id });
     close();
   };
 
@@ -70,6 +70,7 @@ export default function ModalCitys({
                     onPress={() =>
                       handleLocation({
                         city: item.city,
+                        iata: item.iata,
                         state: item.state,
                         id: item.id,
                       })

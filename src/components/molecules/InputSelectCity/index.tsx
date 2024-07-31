@@ -10,7 +10,7 @@ import { LocaleType } from "../../../services/locale.service";
 
 export type FormFieldSelectProps = TextInputProps & {
   placeholder: string;
-  value?: string;
+  value?: any;
   onChangeText?: any;
   citys: LocaleType[];
   onSearch: (value: string) => void;
@@ -34,8 +34,8 @@ export default function InputSelectCity({
   const [valueReceived, setValueReceived] = useState("");
 
   const handleSelect = (item: any) => {
-    onChangeText(item);
-    setSelectedValue(item.city);
+    onChangeText(item.city);
+    setSelectedValue(item);
     setVisible(false);
   };
 
@@ -68,7 +68,8 @@ export default function InputSelectCity({
             }
           >
             {selectedValue || value
-              ? valueReceived || selectedValue
+              ? valueReceived ||
+                `${selectedValue?.city} - ${selectedValue.iata} `
               : placeholder || "Selecione uma opção"}
           </Paragraph>
         </View>

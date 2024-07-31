@@ -16,6 +16,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { theme } from "../../theme/default.theme";
 import { icons, iconsProfile } from "../../utils/icons";
 import { Paragraph } from "../../components/atoms/Paragraph";
+import { Icon } from "../../components/atoms/Icon";
 
 export default function Profile() {
   const { user, signOut } = useAuth();
@@ -51,17 +52,20 @@ export default function Profile() {
     {
       text: "Informações pessoais",
       icon: profile,
-      onPress: () => navigation.navigate("AccountOne"),
+      // onPress: () => navigation.navigate("Account"),
+      onPress: () => console.log("Account"),
     },
     {
       text: "Contatos",
       icon: message,
-      onPress: () => navigation.navigate("Contacts"),
+      onPress: () => console.log("Contacts"),
+      // onPress: () => navigation.navigate("Contacts"),
     },
     {
       text: "Alterar senha",
       icon: key,
-      onPress: () => navigation.navigate("ChangePassword"),
+      onPress: () => console.log("ChangePassword"),
+      // onPress: () => navigation.navigate(""),
     },
     {
       text: "Endereço",
@@ -106,6 +110,7 @@ export default function Profile() {
             <Label color={theme.color.NeutralGra} size={14}>
               {item.text}
             </Label>
+            <Icon color={theme.color.Orange100} name="chevron-right" />
           </AccountItem>
         ))}
         <Row mt={8} />

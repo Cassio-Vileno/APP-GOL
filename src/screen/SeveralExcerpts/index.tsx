@@ -36,7 +36,6 @@ export default function SeveralExcerpts(): JSX.Element {
   };
 
   useEffect(() => {
-    console.log("oiii");
     onGetLocale();
   }, []);
 

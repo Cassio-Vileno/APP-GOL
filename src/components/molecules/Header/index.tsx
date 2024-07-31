@@ -13,7 +13,9 @@ export default function Header(): JSX.Element {
   const navigation = useNavigation<any>();
   return (
     <Container>
-      <LogoImg resizeMode="contain" source={images.logo} />
+      <TouchableOpacity onPress={() => navigation.navigate("HOME")}>
+        <LogoImg resizeMode="contain" source={images.logo} />
+      </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("SUACONTA")}>
         {!signed ? (
           <Paragraph

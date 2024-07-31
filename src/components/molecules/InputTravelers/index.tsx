@@ -97,7 +97,7 @@ export default function InputTravelers({
             {countAdult | countChild | countBaby
               ? `${countAdult ? `${countAdult} Adulto(s)` : ""}${
                   countChild & countAdult ? `,` : ""
-                }${countChild ? ` ${countChild} Crianças(s)` : ""}${
+                }${countChild ? ` ${countChild} Criança(s)` : ""}${
                   countBaby ? `,  ${countBaby} Bebê(s)` : ""
                 }`
               : "Viajantes"}
