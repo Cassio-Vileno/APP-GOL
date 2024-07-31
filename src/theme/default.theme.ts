@@ -27,7 +27,7 @@ export const theme = {
     width: '100%',
     height: 56,
     textSize: 14,
-    borderRadius: 64,
+    borderRadius: 12,
     backgroundColor: {
       primary: '#FF5A00',
       secondary: '#ffffff',
