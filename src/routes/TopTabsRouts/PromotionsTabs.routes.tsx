@@ -4,14 +4,13 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { Paragraph } from "../../components/atoms/Paragraph";
 import { RFValue } from "../../utils/normalize";
 
-import RoundTrip from "../../screen/RoundTrip";
-import AnExcerpt from "../../screen/AnExcerpt";
-import SeveralExcerpts from "../../screen/SeveralExcerpts";
-import { ImageBackground } from "react-native";
+import AllPromotionsList from "../../screen/AllPromotionsList";
+import NationalPromotiosList from "../../screen/NationalPromotiosList";
+import InternationalPromotionsList from "../../screen/InternationalPromotionsList";
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function TravelPurchaseTab() {
+export default function PromotionsTab() {
   const [height, setHeight] = useState(60);
 
   useEffect(() => {
@@ -44,34 +43,34 @@ export default function TravelPurchaseTab() {
       }}
     >
       <Tab.Screen
-        name="ROUNDTRIP"
-        component={RoundTrip}
+        name="ALL"
+        component={AllPromotionsList}
         options={{
           tabBarLabel: ({ color }) => (
             <Paragraph size={12} color={color} fontFamily="Poppins_600SemiBold">
-              IDA E VOLTA
+              Todos
             </Paragraph>
           ),
         }}
       />
       <Tab.Screen
-        name="EXCERPT"
-        component={AnExcerpt}
+        name="NATIONAL"
+        component={NationalPromotiosList}
         options={{
           tabBarLabel: ({ color }) => (
             <Paragraph size={12} color={color} fontFamily="Poppins_600SemiBold">
-              UM TRECHO
+              Nacional
             </Paragraph>
           ),
         }}
       />
       <Tab.Screen
-        name="VARIOUSEXCERPTS"
-        component={SeveralExcerpts}
+        name="INTERNATIONAL"
+        component={InternationalPromotionsList}
         options={{
           tabBarLabel: ({ color }) => (
-            <Paragraph size={10} color={color} fontFamily="Poppins_600SemiBold">
-              VARIOS TRECHOS
+            <Paragraph size={12} color={color} fontFamily="Poppins_600SemiBold">
+              Internacional
             </Paragraph>
           ),
         }}

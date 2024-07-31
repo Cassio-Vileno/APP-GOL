@@ -5,6 +5,8 @@ import Home from "../screen/Home";
 import TabRoutes from "./tab.routes";
 import Login from "../screen/Login";
 import Profile from "../screen/Profile";
+import Promotion from "../screen/Promotion";
+import CheckIn from "../screen/CheckIn";
 
 const AppStack = createStackNavigator();
 
@@ -35,6 +37,20 @@ export default function AppRoutes() {
       <AppStack.Screen
         name="LogIn"
         component={Login}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <AppStack.Screen
+        name="Promotion"
+        component={Promotion}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <AppStack.Screen
+        name="CheckIn"
+        component={CheckIn}
         options={{
           headerShown: false,
         }}

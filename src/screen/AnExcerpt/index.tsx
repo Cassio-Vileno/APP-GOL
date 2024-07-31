@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { Container, ContainerForm, Content } from "./styles";
@@ -11,9 +11,32 @@ import ButtonPrimary from "../../components/atoms/ButtonPrimary";
 import Checkbox from "../../components/atoms/Checkbox";
 import InputText from "../../components/atoms/InputText";
 import InputSelect from "../../components/atoms/InputSelect";
+import { LocaleService, LocaleType } from "../../services/locale.service";
+import useDebounce from "../../hooks/useDebounce";
 
 export default function AnExcerpt(): JSX.Element {
   const [promotionalCode, setPromotionalCode] = useState(false);
+  const [searchCity, setSearchCity] = useState("");
+  const [locale, setLocale] = useState<LocaleType[]>([]);
+  const debouncedSearchTerm = useDebounce(searchCity, 700);
+
+  const filteredData = locale.filter((item) =>
+    item.city.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+  );
+
+  const onGetLocale = async () => {
+    try {
+      const res = await LocaleService.findAll();
+      setLocale(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    onGetLocale();
+  }, []);
+
   const [stopover, setStopover] = useState(false);
   const {
     handleSubmit,
@@ -36,6 +59,8 @@ export default function AnExcerpt(): JSX.Element {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputSelectCity
+                  onSearch={setSearchCity}
+                  citys={filteredData}
                   placeholder="Origem"
                   value={value}
                   onChangeText={onChange}
@@ -53,6 +78,8 @@ export default function AnExcerpt(): JSX.Element {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputSelectCity
+                  onSearch={setSearchCity}
+                  citys={filteredData}
                   placeholder="Destino"
                   value={value}
                   onChangeText={onChange}

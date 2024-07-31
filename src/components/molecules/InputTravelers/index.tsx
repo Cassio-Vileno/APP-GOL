@@ -71,7 +71,12 @@ export default function InputTravelers({
     }
   };
 
-  const close = () => {
+  const onSubmit = () => {
+    onChangeText({
+      Adult: countAdult,
+      Child: countChild,
+      Baby: countBaby,
+    });
     setVisible(false);
   };
 
@@ -91,8 +96,10 @@ export default function InputTravelers({
           <Paragraph size={theme.input.size} fontFamily="Poppins_400Regular">
             {countAdult | countChild | countBaby
               ? `${countAdult ? `${countAdult} Adulto(s)` : ""}${
-                  countChild ? `,  ${countChild} Crianças(s)` : ""
-                }${countBaby ? `,  ${countBaby} Bebê(s)` : ""}`
+                  countChild & countAdult ? `,` : ""
+                }${countChild ? ` ${countChild} Crianças(s)` : ""}${
+                  countBaby ? `,  ${countBaby} Bebê(s)` : ""
+                }`
               : "Viajantes"}
           </Paragraph>
         </View>
@@ -109,7 +116,7 @@ export default function InputTravelers({
             </Row>
           </ItemTravelersContent>
           <Row fd="row" gap={15} width={26}>
-            <ButtonCounter onPress={decrementAdult}>
+            <ButtonCounter disabled={countAdult == 0} onPress={decrementAdult}>
               <Paragraph fontFamily="Poppins_700Bold">-</Paragraph>
             </ButtonCounter>
             <Paragraph>{countAdult}</Paragraph>
@@ -130,7 +137,7 @@ export default function InputTravelers({
             </Row>
           </ItemTravelersContent>
           <Row fd="row" gap={15} width={26}>
-            <ButtonCounter onPress={decrementChild}>
+            <ButtonCounter disabled={countChild == 0} onPress={decrementChild}>
               <Paragraph fontFamily="Poppins_700Bold">-</Paragraph>
             </ButtonCounter>
             <Paragraph>{countChild}</Paragraph>
@@ -151,7 +158,7 @@ export default function InputTravelers({
             </Row>
           </ItemTravelersContent>
           <Row fd="row" gap={15} width={26}>
-            <ButtonCounter onPress={decrementBaby}>
+            <ButtonCounter disabled={countBaby == 0} onPress={decrementBaby}>
               <Paragraph fontFamily="Poppins_700Bold">-</Paragraph>
             </ButtonCounter>
             <Paragraph>{countBaby}</Paragraph>
@@ -165,7 +172,7 @@ export default function InputTravelers({
         </ItemTravelers>
 
         <Row mt={30} fd="row" gap={10}>
-          <ButtonPrimary onPress={() => close()}>Continuar</ButtonPrimary>
+          <ButtonPrimary onPress={() => onSubmit()}>Continuar</ButtonPrimary>
         </Row>
       </ModalInput>
       <Error>{error?.message}</Error>

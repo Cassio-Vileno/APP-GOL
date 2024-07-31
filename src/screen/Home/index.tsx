@@ -28,8 +28,7 @@ export default function Home(): JSX.Element {
           <ItemButtonHome
             title="Check-in"
             icon={iconHome.checkIn}
-            onPress={() => console.log("")}
-            // onPress={() => navigation.navigate("")}
+            onPress={() => navigation.navigate("CheckIn")}
           />
           <ItemButtonHome
             title="Minhas viajens"
@@ -52,8 +51,7 @@ export default function Home(): JSX.Element {
           <ItemButtonHome
             title="Ofertas"
             icon={iconHome.oferta}
-            onPress={() => console.log("")}
-            // onPress={() => navigation.navigate("")}
+            onPress={() => navigation.navigate("Promotion")}
           />
           <ItemButtonHome
             title="Comprar passagem"

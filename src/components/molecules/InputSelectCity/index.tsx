@@ -6,11 +6,14 @@ import { Paragraph } from "../../atoms/Paragraph";
 import { Icon } from "../../atoms/Icon";
 import ModalCitys from "../ModalCitys";
 import Row from "../../atoms/Row";
+import { LocaleType } from "../../../services/locale.service";
 
 export type FormFieldSelectProps = TextInputProps & {
   placeholder: string;
   value?: string;
   onChangeText?: any;
+  citys: LocaleType[];
+  onSearch: (value: string) => void;
   touched?: any;
   error?: any;
   width?: string;
@@ -20,6 +23,8 @@ export default function InputSelectCity({
   error,
   touched,
   onChangeText,
+  citys,
+  onSearch,
   placeholder,
   value,
   ...rest
@@ -29,7 +34,7 @@ export default function InputSelectCity({
   const [valueReceived, setValueReceived] = useState("");
 
   const handleSelect = (item: any) => {
-    onChangeText(item.value);
+    onChangeText(item);
     setSelectedValue(item.city);
     setVisible(false);
   };
@@ -70,6 +75,8 @@ export default function InputSelectCity({
         <Icon name="chevron-down" color={theme.color.Orange100} size={25} />
       </Container>
       <ModalCitys
+        citys={citys}
+        onSearch={onSearch}
         value={selectedValue || ""}
         setLocation={(e: any) => handleSelect(e)}
         close={() => setVisible(false)}

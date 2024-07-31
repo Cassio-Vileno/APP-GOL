@@ -20,35 +20,25 @@ import { LocaleService, LocaleType } from "../../../services/locale.service";
 type ModalCitysProps = {
   isVisible: boolean;
   close: () => void;
+  citys: LocaleType[];
   setLocation: (item: any) => void;
   value: string;
+  onSearch: (value: string) => void;
 };
 
 export default function ModalCitys({
   isVisible,
   setLocation,
+  onSearch,
   close,
+  citys,
   value,
   ...rest
 }: ModalCitysProps): JSX.Element {
-  const [locale, setLocale] = useState<LocaleType[]>([]);
-
-  const onGetLocale = async () => {
-    try {
-      const res = await LocaleService.findAll();
-      setLocale(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const handleLocation = ({ city, state, id }: any) => {
     setLocation({ city, state, id });
     close();
   };
-
-  useEffect(() => {
-    onGetLocale();
-  }, []);
 
   return (
     <Modal
@@ -66,10 +56,10 @@ export default function ModalCitys({
           <ContentModal>
             <Paragraph size={18}> Qual a sua cidade?</Paragraph>
             <SearchBarContainer>
-              <SearchBar onChageText={(e: any) => console.log(e)} />
+              <SearchBar onChageText={onSearch} />
             </SearchBarContainer>
             <FlatList
-              data={locale}
+              data={citys}
               style={{ margin: 8 }}
               ItemSeparatorComponent={LineSeparator}
               renderItem={({ item }) => {
@@ -86,6 +76,7 @@ export default function ModalCitys({
                     }
                     imageUri={item.image_file}
                     name={item.city}
+                    iata={item.iata}
                     state={item.state}
                   />
                 );

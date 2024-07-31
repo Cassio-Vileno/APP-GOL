@@ -1,15 +1,16 @@
 export const icons = {
-  bin: require('../assets/icons/bin.png'),
-  exit: require('../assets/icons/exit.png'),
-  key: require('../assets/icons/key.png'),
-  message: require('../assets/icons/message.png'),
-  pinAdrress: require('../assets/icons/pinAdrress.png'),
-  profile: require('../assets/icons/profile.png'),
-  document: require('../assets/icons/document.png'),
-  plate: require('../assets/icons/plate.png'),
   children: require('../assets/icons/children.png'),
   baby: require('../assets/icons/baby.png'),
   adult: require('../assets/icons/adult.png'),
+}
+
+export const iconsProfile = {
+  bin: require('../assets/icons/profile/bin.png'),
+  exit: require('../assets/icons/profile/exit.png'),
+  key: require('../assets/icons/profile/key.png'),
+  message: require('../assets/icons/profile/message.png'),
+  pinAdrress: require('../assets/icons/profile/pinAdrress.png'),
+  profile: require('../assets/icons/profile/profile.png'),
 }
 
 export const menu = {

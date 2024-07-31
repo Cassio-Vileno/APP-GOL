@@ -6,7 +6,8 @@ export const Container = styled.View`
   flex: 1;
 `;
 
-export const Content = styled.ScrollView`
+export const Content = styled.View`
+  height: 100%;
   background-color: ${theme.page.backgroundColor};
   padding-bottom: 40px;
   padding: 20px 12px 0 12px;

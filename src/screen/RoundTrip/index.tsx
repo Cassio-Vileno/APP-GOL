@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 import { Container, ContainerForm, Content } from "./styles";
@@ -11,17 +11,46 @@ import ButtonPrimary from "../../components/atoms/ButtonPrimary";
 import Checkbox from "../../components/atoms/Checkbox";
 import InputText from "../../components/atoms/InputText";
 import InputSelect from "../../components/atoms/InputSelect";
+import { LocaleService, LocaleType } from "../../services/locale.service";
+import useDebounce from "../../hooks/useDebounce";
 
 export default function RoundTrip(): JSX.Element {
   const [promotionalCode, setPromotionalCode] = useState(false);
   const [stopover, setStopover] = useState(false);
+  const [departureDate, setDepartureDate] = useState("");
+  const [searchCity, setSearchCity] = useState("");
+  const [locale, setLocale] = useState<LocaleType[]>([]);
+  const debouncedSearchTerm = useDebounce(searchCity, 700);
+
+  const filteredData = locale.filter((item) =>
+    item.city.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+  );
+
+  const onGetLocale = async () => {
+    try {
+      const res = await LocaleService.findAll();
+      setLocale(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    onGetLocale();
+  }, []);
+
   const {
     handleSubmit,
     control,
     setValue,
     setError,
+    clearErrors,
     formState: { errors },
   } = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
 
   return (
     <Container>
@@ -36,10 +65,14 @@ export default function RoundTrip(): JSX.Element {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputSelectCity
+                  citys={filteredData}
+                  onSearch={setSearchCity}
                   placeholder="Origem"
                   value={value}
-                  onChangeText={onChange}
-                  error={errors.gender}
+                  onChangeText={(value: any) => {
+                    onChange(value);
+                  }}
+                  error={errors.origin}
                 />
               )}
             />
@@ -53,10 +86,14 @@ export default function RoundTrip(): JSX.Element {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputSelectCity
+                  citys={filteredData}
+                  onSearch={setSearchCity}
                   placeholder="Destino"
                   value={value}
-                  onChangeText={onChange}
-                  error={errors.gender}
+                  onChangeText={(value: any) => {
+                    onChange(value);
+                  }}
+                  error={errors.destiny}
                 />
               )}
             />
@@ -72,8 +109,11 @@ export default function RoundTrip(): JSX.Element {
                 <InputCalendar
                   placeholder="Partida"
                   value={value}
-                  onChangeText={onChange}
-                  error={errors.gender}
+                  onChangeText={(e: any) => {
+                    onChange(e);
+                    setDepartureDate(e);
+                  }}
+                  error={errors.match}
                 />
               )}
             />
@@ -87,10 +127,11 @@ export default function RoundTrip(): JSX.Element {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputCalendar
+                  minDate={departureDate}
                   placeholder="Retorno"
                   value={value}
                   onChangeText={onChange}
-                  error={errors.gender}
+                  error={errors.return}
                 />
               )}
             />
@@ -107,7 +148,7 @@ export default function RoundTrip(): JSX.Element {
                   placeholder="Viajantes"
                   value={value}
                   onChangeText={onChange}
-                  error={errors.gender}
+                  error={errors.travelers}
                 />
               )}
             />
@@ -121,17 +162,14 @@ export default function RoundTrip(): JSX.Element {
               {promotionalCode ? (
                 <Row mt={15}>
                   <Controller
-                    rules={{
-                      required: { value: true, message: "Campo obrigatório" },
-                    }}
-                    name="promotional-code"
+                    name="promotionalCode"
                     control={control}
                     render={({ field: { onChange, value } }) => (
                       <InputText
                         placeholder="Código"
                         value={value}
                         onChangeText={onChange}
-                        error={errors.gender}
+                        error={errors.promotionalCode}
                       />
                     )}
                   />
@@ -147,7 +185,7 @@ export default function RoundTrip(): JSX.Element {
               {stopover ? (
                 <Row mt={15}>
                   <Controller
-                    name=""
+                    name="stopover"
                     control={control}
                     render={({ field: { onChange, value } }) => (
                       <InputSelect
@@ -157,11 +195,12 @@ export default function RoundTrip(): JSX.Element {
                         ]}
                         onChangeText={onChange}
                         placeholder="Trecho"
+                        error={errors.stopover}
                       />
                     )}
                   />
                   <Controller
-                    name=""
+                    name="stoppingPoint"
                     control={control}
                     render={({ field: { onChange, value } }) => (
                       <InputSelect
@@ -176,7 +215,7 @@ export default function RoundTrip(): JSX.Element {
                     )}
                   />
                   <Controller
-                    name=""
+                    name="NightsStoppingPoint"
                     control={control}
                     render={({ field: { onChange, value } }) => (
                       <InputSelect
@@ -194,7 +233,9 @@ export default function RoundTrip(): JSX.Element {
               ) : null}
             </Row>
           </Row>
-          <ButtonPrimary onPress={() => {}}>Buscar passagens</ButtonPrimary>
+          <ButtonPrimary onPress={handleSubmit(onSubmit)}>
+            Buscar passagens
+          </ButtonPrimary>
         </ContainerForm>
       </Content>
     </Container>

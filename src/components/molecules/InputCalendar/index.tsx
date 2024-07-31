@@ -11,15 +11,10 @@ import CalendarComponent from "../../atoms/Calendar";
 import { DateMaskBR } from "../../../utils/mask";
 import ButtonPrimary from "../../atoms/ButtonPrimary";
 
-type Item = {
-  id: string;
-  city: string;
-  state: string;
-};
-
 export type FormFieldSelectProps = TextInputProps & {
   placeholder: string;
   value?: string;
+  minDate?: string;
   onChangeText?: any;
   touched?: any;
   error?: any;
@@ -29,6 +24,7 @@ export type FormFieldSelectProps = TextInputProps & {
 export default function InputCalendar({
   error,
   touched,
+  minDate,
   onChangeText,
   placeholder,
   value,
@@ -75,16 +71,25 @@ export default function InputCalendar({
         <Paragraph size={18}>Escolha a data</Paragraph>
         <CalendarComponent
           date={selectedValue || ""}
-          handleSetDate={setSelectedValue}
+          minDate={minDate}
+          handleSetDate={(e) => {
+            setSelectedValue(e);
+            onChangeText(e);
+          }}
           onPress={() => close()}
         />
-        <ButtonPrimary
-          width="50%"
-          backgroundColor={theme.button.backgroundColor.disabled}
-          onPress={() => close()}
-        >
-          Voltar
-        </ButtonPrimary>
+        <Row fd="row" jc="space-between">
+          <ButtonPrimary
+            width="48%"
+            backgroundColor={theme.button.backgroundColor.disabled}
+            onPress={() => close()}
+          >
+            Voltar
+          </ButtonPrimary>
+          <ButtonPrimary width="48%" onPress={() => close()}>
+            Continuar
+          </ButtonPrimary>
+        </Row>
       </ModalInput>
       <Error>{error?.message}</Error>
     </>

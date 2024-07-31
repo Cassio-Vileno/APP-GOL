@@ -5,6 +5,7 @@ import { Paragraph } from "../../atoms/Paragraph";
 type CityItemProps = {
   name: string;
   state: string;
+  iata: string;
   imageUri: string;
   onPress: () => void;
   isSelected?: boolean;
@@ -12,6 +13,7 @@ type CityItemProps = {
 
 export default function CityItem({
   name,
+  iata,
   state,
   imageUri,
   isSelected,
@@ -27,7 +29,7 @@ export default function CityItem({
           size={14}
           fontFamily="Poppins_600SemiBold"
         >
-          {name}
+          {name} - {iata}
         </Paragraph>
         <Paragraph
           color={isSelected ? "#DCAE0D" : "#8C8C8C"}

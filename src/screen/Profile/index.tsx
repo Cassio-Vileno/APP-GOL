@@ -14,15 +14,14 @@ import { useNavigation } from "@react-navigation/native";
 import { CONTEXT_DIALOG_MESSAGE } from "../../utils/constants";
 import { useAuth } from "../../hooks/useAuth";
 import { theme } from "../../theme/default.theme";
-import { icons } from "../../utils/icons";
+import { icons, iconsProfile } from "../../utils/icons";
 import { Paragraph } from "../../components/atoms/Paragraph";
-import HeaderShow from "../../components/molecules/HeaderShow";
 
 export default function Profile() {
   const { user, signOut } = useAuth();
   const navigation = useNavigation<any>();
   const { openDialog, closeDialog } = useDialog();
-  const { bin, exit, key, message, pinAdrress, profile, document } = icons;
+  const { bin, exit, key, message, pinAdrress, profile } = iconsProfile;
 
   const handlerOpenDialog = () => {
     openDialog({

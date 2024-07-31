@@ -16,6 +16,7 @@ export const theme = {
     OrangeBlur: "#ff5e007e",
 
     white: "#fff",
+    black: "#000"
   },
   tabNavigator: {
     activeTintColor: '#FF5E00',

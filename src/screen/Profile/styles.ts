@@ -22,6 +22,7 @@ export const Content = styled.View`
 
 export const Label = styled(Paragraph)`
   flex: 1;
+  color: ${theme.color.black};
 `;
 
 export const IconItem = styled.Image`

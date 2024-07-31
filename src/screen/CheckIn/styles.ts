@@ -15,14 +15,10 @@ export const Content = styled.ScrollView`
 export const ContainerForm = styled.View`
   width: 100%;
   padding: 0 12px;
-  flex-wrap: wrap;
-  flex-direction: row;
   gap: 10px;
 `;
 
-export const SeparationLine = styled.View`
+export const ButtonCheckIn = styled.TouchableOpacity`
   width: 100%;
-  border-bottom-width: 2px;
-  padding-left: 5px;
-  border-bottom-color: ${theme.color.gray100};
+  justify-content: space-between;
 `;

@@ -1,6 +1,9 @@
 import React from "react";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { theme } from "../../../theme/default.theme";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Paragraph } from "../Paragraph";
+import { Icon } from "../Icon";
 
 LocaleConfig.locales["pt-br"] = {
   monthNames: [
@@ -49,12 +52,14 @@ LocaleConfig.defaultLocale = "pt-br";
 type CalendarComponentProps = {
   onPress: () => void;
   date: string;
+  minDate?: string;
   handleSetDate(value: string): void;
 };
 
 const CalendarComponent = ({
   handleSetDate,
   date,
+  minDate,
   onPress,
 }: CalendarComponentProps): JSX.Element => {
   const today = new Date().toISOString().split("T")[0];
@@ -63,9 +68,22 @@ const CalendarComponent = ({
     onPress();
   };
 
+  const renderArrow = (direction: string) => {
+    return (
+      <TouchableOpacity>
+        {direction === "left" ? (
+          <Icon color={theme.color.Orange100} size={27} name="chevron-left" />
+        ) : (
+          <Icon color={theme.color.Orange100} size={27} name="chevron-right" />
+        )}
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <Calendar
-      minDate={today}
+      renderArrow={renderArrow}
+      minDate={minDate || today}
       style={{
         height: 350,
       }}
