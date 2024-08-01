@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import { theme } from '../../../theme/default.theme';
 import { RFValue } from '../../../utils/normalize';
 import { Paragraph } from '../../atoms/Paragraph';
+import { css } from 'styled-components';
 
 interface ButtonOutlinedProps {
   width?: string;
@@ -15,6 +16,12 @@ export const Container = styled.TouchableOpacity<ButtonOutlinedProps>`
   border-radius: ${theme.button.borderRadius}px;
   justify-content: center;
   align-items: center;
+  
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      opacity: 0.6;
+    `}
 `;
 
 export const ButtonText = styled(Paragraph) <{ color?: string }>`
