@@ -13,13 +13,14 @@ import InputText from "../../components/molecules/InputText";
 import InputTravelers from "../../components/molecules/InputTravelers";
 import useDebounce from "../../hooks/useDebounce";
 import { LocaleService, LocaleType } from "../../services/locale.service";
+import { useDialog } from "../../hooks/useDialog";
 
 export default function SeveralExcerpts(): JSX.Element {
   const [promotionalCode, setPromotionalCode] = useState(false);
-  const [stopover, setStopover] = useState(false);
   const [searchCity, setSearchCity] = useState("");
   const [locale, setLocale] = useState<LocaleType[]>([]);
   const debouncedSearchTerm = useDebounce(searchCity, 700);
+  const { openDialog, closeDialog } = useDialog();
 
   const filteredData = locale.filter((item) =>
     item.city.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
@@ -32,6 +33,18 @@ export default function SeveralExcerpts(): JSX.Element {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+    openDialog({
+      title: "Sucesso",
+      subtitle: "Busca feita com sucesso",
+      buttonText: "Ok",
+      buttonPress: () => {
+        closeDialog();
+      },
+    });
   };
 
   useEffect(() => {
@@ -53,16 +66,19 @@ export default function SeveralExcerpts(): JSX.Element {
           <Row>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo viajantes é obrigatório",
+                },
               }}
-              name="travelers"
+              name="fristTravelers"
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputTravelers
                   placeholder="Viajantes"
                   value={value}
                   onChangeText={onChange}
-                  error={errors.gender}
+                  error={errors.fristTravelers}
                 />
               )}
             />
@@ -73,9 +89,12 @@ export default function SeveralExcerpts(): JSX.Element {
           <Row width={48}>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo origem é obrigatório",
+                },
               }}
-              name="origin"
+              name="fristOrigin"
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputSelectCity
@@ -83,8 +102,10 @@ export default function SeveralExcerpts(): JSX.Element {
                   onSearch={setSearchCity}
                   placeholder="Origem"
                   value={value}
-                  onChangeText={onChange}
-                  error={errors.gender}
+                  onChangeText={(e: any) => {
+                    onChange(e);
+                  }}
+                  error={errors.fristOrigin}
                 />
               )}
             />
@@ -92,9 +113,12 @@ export default function SeveralExcerpts(): JSX.Element {
           <Row width={48}>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo destino é obrigatório",
+                },
               }}
-              name="destiny"
+              name="fristDestiny"
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputSelectCity
@@ -102,8 +126,10 @@ export default function SeveralExcerpts(): JSX.Element {
                   onSearch={setSearchCity}
                   placeholder="Destino"
                   value={value}
-                  onChangeText={onChange}
-                  error={errors.gender}
+                  onChangeText={(e: any) => {
+                    onChange(e);
+                  }}
+                  error={errors.fristDestiny}
                 />
               )}
             />
@@ -111,16 +137,16 @@ export default function SeveralExcerpts(): JSX.Element {
           <Row>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: { value: true, message: "Campo Data é obrigatório" },
               }}
-              name="match"
+              name="fristMatch"
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputCalendar
                   placeholder="Data"
                   value={value}
                   onChangeText={onChange}
-                  error={errors.gender}
+                  error={errors.fristMatch}
                 />
               )}
             />
@@ -132,9 +158,12 @@ export default function SeveralExcerpts(): JSX.Element {
           <Row width={48}>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo origem é obrigatório",
+                },
               }}
-              name="origin"
+              name="secondOrigin"
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputSelectCity
@@ -143,7 +172,7 @@ export default function SeveralExcerpts(): JSX.Element {
                   placeholder="Origem"
                   value={value}
                   onChangeText={onChange}
-                  error={errors.gender}
+                  error={errors.secondOrigin}
                 />
               )}
             />
@@ -151,9 +180,12 @@ export default function SeveralExcerpts(): JSX.Element {
           <Row width={48}>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo destino é obrigatório",
+                },
               }}
-              name="destiny"
+              name="secondDestiny"
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputSelectCity
@@ -162,7 +194,7 @@ export default function SeveralExcerpts(): JSX.Element {
                   placeholder="Destino"
                   value={value}
                   onChangeText={onChange}
-                  error={errors.gender}
+                  error={errors.secondDestiny}
                 />
               )}
             />
@@ -170,16 +202,16 @@ export default function SeveralExcerpts(): JSX.Element {
           <Row>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: { value: true, message: "Campo data é obrigatório" },
               }}
-              name="match"
+              name="secondMatch"
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputCalendar
                   placeholder="Data"
                   value={value}
                   onChangeText={onChange}
-                  error={errors.gender}
+                  error={errors.secondMatch}
                 />
               )}
             />
@@ -194,17 +226,14 @@ export default function SeveralExcerpts(): JSX.Element {
               {promotionalCode ? (
                 <Row mt={15}>
                   <Controller
-                    rules={{
-                      required: { value: true, message: "Campo obrigatório" },
-                    }}
-                    name="promotional-code"
+                    name="promotionalCode"
                     control={control}
                     render={({ field: { onChange, value } }) => (
                       <InputText
                         placeholder="Código"
                         value={value}
                         onChangeText={onChange}
-                        error={errors.gender}
+                        error={errors.promotionalCode}
                       />
                     )}
                   />
@@ -212,7 +241,9 @@ export default function SeveralExcerpts(): JSX.Element {
               ) : null}
             </Row>
           </Row>
-          <ButtonPrimary onPress={() => {}}>Buscar passagens</ButtonPrimary>
+          <ButtonPrimary onPress={handleSubmit(onSubmit)}>
+            Buscar passagens
+          </ButtonPrimary>
         </ContainerForm>
       </Content>
     </Container>

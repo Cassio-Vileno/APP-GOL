@@ -13,12 +13,15 @@ import InputText from "../../components/molecules/InputText";
 import useDebounce from "../../hooks/useDebounce";
 import { LocaleService, LocaleType } from "../../services/locale.service";
 import { theme } from "../../theme/default.theme";
+import { useDialog } from "../../hooks/useDialog";
 
 export default function CheckIn(): JSX.Element {
   const [searchCity, setSearchCity] = useState("");
   const [locale, setLocale] = useState<LocaleType[]>([]);
   const [inputName, setInputName] = useState("1");
   const debouncedSearchTerm = useDebounce(searchCity, 700);
+
+  const { openDialog, closeDialog } = useDialog();
 
   const filteredData = locale.filter((item) =>
     item.city.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
@@ -48,6 +51,14 @@ export default function CheckIn(): JSX.Element {
 
   const onSubmit = (data: any) => {
     console.log(data);
+    openDialog({
+      title: "Sucesso",
+      subtitle: `CheckIn ${data.IdentificationCode} feito com sucesso`,
+      buttonText: "Ok",
+      buttonPress: () => {
+        closeDialog();
+      },
+    });
   };
 
   return (
@@ -63,6 +74,7 @@ export default function CheckIn(): JSX.Element {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputSelect
+                  value="1"
                   items={[
                     { label: "Número do bilhete", value: "1" },
                     { label: "Código da reserva", value: "2" },
@@ -72,21 +84,29 @@ export default function CheckIn(): JSX.Element {
                     setInputName(value);
                   }}
                   placeholder="Buscar por"
-                  error={errors.stopover}
+                  error={errors.searchType}
                 />
               )}
             />
           </Row>
           <Row>
             <Controller
-              name={inputName == "1" ? "namber" : "code"}
+              name={"IdentificationCode"}
+              rules={{
+                required: {
+                  value: true,
+                  message: `Campo ${
+                    inputName == "1" ? "número" : "código"
+                  } é obrigatório`,
+                },
+              }}
               control={control}
               render={({ field: { onChange, value } }) => (
                 <InputText
                   placeholder={inputName == "1" ? "Número" : "Código"}
                   value={value}
                   onChangeText={onChange}
-                  error={errors.promotionalCode}
+                  error={errors.IdentificationCode}
                 />
               )}
             />
@@ -94,7 +114,10 @@ export default function CheckIn(): JSX.Element {
           <Row>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo Origem é obrigatório",
+                },
               }}
               name="origin"
               control={control}
@@ -107,7 +130,7 @@ export default function CheckIn(): JSX.Element {
                   onChangeText={(value: any) => {
                     onChange(value);
                   }}
-                  error={errors.destiny}
+                  error={errors.origin}
                 />
               )}
             />

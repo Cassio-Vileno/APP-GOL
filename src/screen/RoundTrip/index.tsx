@@ -13,6 +13,7 @@ import InputText from "../../components/molecules/InputText";
 import InputTravelers from "../../components/molecules/InputTravelers";
 import useDebounce from "../../hooks/useDebounce";
 import { LocaleService, LocaleType } from "../../services/locale.service";
+import { useDialog } from "../../hooks/useDialog";
 
 export default function RoundTrip(): JSX.Element {
   const [promotionalCode, setPromotionalCode] = useState(false);
@@ -21,6 +22,8 @@ export default function RoundTrip(): JSX.Element {
   const [searchCity, setSearchCity] = useState("");
   const [locale, setLocale] = useState<LocaleType[]>([]);
   const debouncedSearchTerm = useDebounce(searchCity, 700);
+
+  const { openDialog, closeDialog } = useDialog();
 
   const filteredData = locale.filter((item) =>
     item.city.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
@@ -50,16 +53,47 @@ export default function RoundTrip(): JSX.Element {
 
   const onSubmit = (data: any) => {
     console.log(data);
+    openDialog({
+      title: "Sucesso",
+      subtitle: "Busca feita com sucesso",
+      buttonText: "Ok",
+      buttonPress: () => {
+        closeDialog();
+      },
+    });
   };
 
   return (
     <Container>
       <Content>
         <ContainerForm>
+          <Row>
+            <Controller
+              rules={{
+                required: {
+                  value: true,
+                  message: "Campo viajantes é obrigatório",
+                },
+              }}
+              name="travelers"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <InputTravelers
+                  placeholder="Viajantes"
+                  value={value}
+                  onChangeText={onChange}
+                  error={errors.travelers}
+                />
+              )}
+            />
+          </Row>
           <Row width={48}>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo origem é obrigatório",
+                },
               }}
               name="origin"
               control={control}
@@ -71,6 +105,7 @@ export default function RoundTrip(): JSX.Element {
                   value={value}
                   onChangeText={(value: any) => {
                     onChange(value);
+                    console.log(value);
                   }}
                   error={errors.origin}
                 />
@@ -80,7 +115,10 @@ export default function RoundTrip(): JSX.Element {
           <Row width={48}>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo destino é obrigatório",
+                },
               }}
               name="destiny"
               control={control}
@@ -101,7 +139,10 @@ export default function RoundTrip(): JSX.Element {
           <Row width={48}>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo partida é obrigatório",
+                },
               }}
               name="match"
               control={control}
@@ -121,7 +162,10 @@ export default function RoundTrip(): JSX.Element {
           <Row width={48}>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo retorno é obrigatório",
+                },
               }}
               name="return"
               control={control}
@@ -136,23 +180,7 @@ export default function RoundTrip(): JSX.Element {
               )}
             />
           </Row>
-          <Row>
-            <Controller
-              rules={{
-                required: { value: true, message: "Campo obrigatório" },
-              }}
-              name="travelers"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <InputTravelers
-                  placeholder="Viajantes"
-                  value={value}
-                  onChangeText={onChange}
-                  error={errors.travelers}
-                />
-              )}
-            />
-          </Row>
+
           <Row width={100} gap={10}>
             <Row>
               <Checkbox

@@ -13,12 +13,14 @@ import InputText from "../../components/molecules/InputText";
 import InputTravelers from "../../components/molecules/InputTravelers";
 import useDebounce from "../../hooks/useDebounce";
 import { LocaleService, LocaleType } from "../../services/locale.service";
+import { useDialog } from "../../hooks/useDialog";
 
 export default function AnExcerpt(): JSX.Element {
   const [promotionalCode, setPromotionalCode] = useState(false);
   const [searchCity, setSearchCity] = useState("");
   const [locale, setLocale] = useState<LocaleType[]>([]);
   const debouncedSearchTerm = useDebounce(searchCity, 700);
+  const { openDialog, closeDialog } = useDialog();
 
   const filteredData = locale.filter((item) =>
     item.city.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
@@ -31,6 +33,18 @@ export default function AnExcerpt(): JSX.Element {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+    openDialog({
+      title: "Sucesso",
+      subtitle: "Busca feita com sucesso",
+      buttonText: "Ok",
+      buttonPress: () => {
+        closeDialog();
+      },
+    });
   };
 
   useEffect(() => {
@@ -50,10 +64,33 @@ export default function AnExcerpt(): JSX.Element {
     <Container>
       <Content>
         <ContainerForm>
+          <Row>
+            <Controller
+              rules={{
+                required: {
+                  value: true,
+                  message: "Campo viajantes é obrigatório",
+                },
+              }}
+              name="travelers"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <InputTravelers
+                  placeholder="Viajantes"
+                  value={value}
+                  onChangeText={onChange}
+                  error={errors.travelers}
+                />
+              )}
+            />
+          </Row>
           <Row width={48}>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo origem é obrigatório",
+                },
               }}
               name="origin"
               control={control}
@@ -64,7 +101,7 @@ export default function AnExcerpt(): JSX.Element {
                   placeholder="Origem"
                   value={value}
                   onChangeText={onChange}
-                  error={errors.gender}
+                  error={errors.origin}
                 />
               )}
             />
@@ -72,7 +109,10 @@ export default function AnExcerpt(): JSX.Element {
           <Row width={48}>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo destino é obrigatório",
+                },
               }}
               name="destiny"
               control={control}
@@ -83,7 +123,7 @@ export default function AnExcerpt(): JSX.Element {
                   placeholder="Destino"
                   value={value}
                   onChangeText={onChange}
-                  error={errors.gender}
+                  error={errors.destiny}
                 />
               )}
             />
@@ -91,7 +131,10 @@ export default function AnExcerpt(): JSX.Element {
           <Row>
             <Controller
               rules={{
-                required: { value: true, message: "Campo obrigatório" },
+                required: {
+                  value: true,
+                  message: "Campo partida é obrigatório",
+                },
               }}
               name="match"
               control={control}
@@ -100,28 +143,12 @@ export default function AnExcerpt(): JSX.Element {
                   placeholder="Partida"
                   value={value}
                   onChangeText={onChange}
-                  error={errors.gender}
+                  error={errors.match}
                 />
               )}
             />
           </Row>
-          <Row>
-            <Controller
-              rules={{
-                required: { value: true, message: "Campo obrigatório" },
-              }}
-              name="travelers"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <InputTravelers
-                  placeholder="Viajantes"
-                  value={value}
-                  onChangeText={onChange}
-                  error={errors.gender}
-                />
-              )}
-            />
-          </Row>
+
           <Row width={100} gap={10}>
             <Row>
               <Checkbox
@@ -131,17 +158,14 @@ export default function AnExcerpt(): JSX.Element {
               {promotionalCode ? (
                 <Row mt={15}>
                   <Controller
-                    rules={{
-                      required: { value: true, message: "Campo obrigatório" },
-                    }}
-                    name="promotional-code"
+                    name="promotionalCode"
                     control={control}
                     render={({ field: { onChange, value } }) => (
                       <InputText
                         placeholder="Código"
                         value={value}
                         onChangeText={onChange}
-                        error={errors.gender}
+                        error={errors.promotionalCode}
                       />
                     )}
                   />
@@ -201,7 +225,9 @@ export default function AnExcerpt(): JSX.Element {
               ) : null}
             </Row>
           </Row>
-          <ButtonPrimary onPress={() => {}}>Buscar passagens</ButtonPrimary>
+          <ButtonPrimary onPress={handleSubmit(onSubmit)}>
+            Buscar passagens
+          </ButtonPrimary>
         </ContainerForm>
       </Content>
     </Container>
