@@ -2,7 +2,7 @@ import React from "react";
 import { Modal } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { Paragraph } from "../../atoms/Paragraph";
-import SearchBar from "../../atoms/SearchBar";
+import SearchBar from "../SearchBar";
 import CityItem from "../CityItem";
 import {
   ContainerModal,

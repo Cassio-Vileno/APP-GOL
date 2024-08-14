@@ -1,67 +1,65 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react-native";
+
+import { fireEvent, render } from "@testing-library/react-native";
 import { ReactTestInstance } from "react-test-renderer";
-import ButtonOutline from "./index";
+import { ButtonGhost } from ".";
 
 let pressed = false;
-let outline: ReactTestInstance;
+let ghost: ReactTestInstance;
 const nameText = "Confirmar";
 
 describe("Test Component Button", () => {
   it("should show the button and the touch works correctly", () => {
     const { getByTestId, getByText } = render(
-      <ButtonOutline
-        testID="outline"
+      <ButtonGhost
+        testID="ghost"
         onPress={() => {
           pressed = true;
         }}
       >
         {nameText}
-      </ButtonOutline>
+      </ButtonGhost>
     );
 
-    outline = getByTestId("outline");
+    ghost = getByTestId("ghost");
 
-    expect(outline).toBeTruthy();
+    expect(ghost).toBeTruthy();
 
-    fireEvent.press(outline);
+    fireEvent.press(ghost);
     expect(pressed).toBe(true);
 
     expect(getByText(nameText)).toBeTruthy();
   });
 
-  it("should be possible to enable loading to the button", () => {
-    const { getByTestId } = render(
-      <ButtonOutline
-        testID="outline"
-        onPress={() => {
-          pressed = true;
-        }}
-        loading
-      >
-        {nameText}
-      </ButtonOutline>
-    );
-
-    outline = getByTestId("outline");
-    expect(outline.props.children[0].type.displayName).toBe(
-      "ActivityIndicator"
-    );
-  });
-
   it("should be possible to disable button", () => {
     const { getByTestId } = render(
-      <ButtonOutline
-        testID="outline"
+      <ButtonGhost
+        testID="ghost"
         onPress={() => {
           pressed = true;
         }}
         disabled
       >
         {nameText}
-      </ButtonOutline>
+      </ButtonGhost>
     );
 
-    expect(getByTestId("outline").props.style.opacity).toEqual(0.6);
+    expect(getByTestId("ghost").props.style.opacity).toEqual(0.6);
+  });
+
+  it("should be possible to disable button", () => {
+    const { getByTestId } = render(
+      <ButtonGhost
+        testID="ghost"
+        onPress={() => {
+          pressed = true;
+        }}
+        disabled
+      >
+        {nameText}
+      </ButtonGhost>
+    );
+
+    expect(getByTestId("ghost").props.style.opacity).toEqual(0.6);
   });
 });

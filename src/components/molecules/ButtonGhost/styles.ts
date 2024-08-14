@@ -3,9 +3,15 @@ import { ButtonGhostProps } from '.';
 import { theme } from '../../../theme/default.theme';
 import { RFValue } from '../../../utils/normalize';
 import { Paragraph } from '../../atoms/Paragraph';
+import { css } from 'styled-components';
 
 export const Container = styled.TouchableOpacity<ButtonGhostProps>`
   width: ${props => props.width || theme.button.width};
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      opacity: 0.6;
+    `}
 `;
 
 export const TextButton = styled(Paragraph) <any>`
