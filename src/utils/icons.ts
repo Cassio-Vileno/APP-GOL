@@ -2,6 +2,8 @@ export const icons = {
   children: require('../assets/icons/children.png'),
   baby: require('../assets/icons/baby.png'),
   adult: require('../assets/icons/adult.png'),
+  iconLogoBlack: require('../assets/icons/logo-icon.png'),
+
 }
 
 export const iconsProfile = {

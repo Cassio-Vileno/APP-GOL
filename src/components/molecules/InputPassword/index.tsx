@@ -12,24 +12,17 @@ import {
 
 export type InputPasswordProps = TextInputProps & {
   error?: any;
-  title?: string;
   onChangeText: () => void;
 };
 
 export default function InputPassword({
   error,
   onChangeText,
-  title,
   ...rest
 }: InputPasswordProps): JSX.Element {
   const [showPassword, setShowPassword] = useState(true);
   return (
     <Container>
-      {/* {title && (
-        <Paragraph size={20} color={theme.input.placeholderColor}>
-          {title}
-        </Paragraph>
-      )} */}
       <Content error={error}>
         <PasswordInput
           placeholderTextColor={theme.input.neutralGray}

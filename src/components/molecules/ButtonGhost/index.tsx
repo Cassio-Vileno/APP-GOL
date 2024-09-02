@@ -1,7 +1,7 @@
 import React from "react";
 import { ActivityIndicator, TouchableOpacityProps } from "react-native";
-import { Container, TextButton } from "./styles";
 import { theme } from "../../../theme/default.theme";
+import { Container, TextButton } from "./styles";
 
 export type ButtonGhostProps = TouchableOpacityProps & {
   onPress: () => void;
@@ -10,6 +10,7 @@ export type ButtonGhostProps = TouchableOpacityProps & {
   width?: string;
   loading?: boolean;
   disabled?: boolean;
+  size?: number;
 };
 
 export function ButtonGhost({
@@ -19,6 +20,7 @@ export function ButtonGhost({
   color,
   loading,
   disabled,
+  size,
   ...rest
 }: ButtonGhostProps): JSX.Element {
   return (
@@ -30,7 +32,7 @@ export function ButtonGhost({
           size={25}
         />
       ) : (
-        <TextButton color={color} underlined={underlined}>
+        <TextButton size={size} color={color} underlined={underlined}>
           {children}
         </TextButton>
       )}

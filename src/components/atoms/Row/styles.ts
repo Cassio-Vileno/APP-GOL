@@ -31,4 +31,5 @@ export const Container = styled.View<RowProps>`
 
   flex-direction: ${props => props.fd || 'colun'};
   justify-content: ${props => props.jc || 'inherit'};
+  align-items: ${props => props.alignItems || 'inherit'};
 `;

@@ -1,5 +1,5 @@
-import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import React from "react";
 import { TouchableOpacity } from "react-native";
 import { useAuth } from "../../../hooks/useAuth";
 import { theme } from "../../../theme/default.theme";
@@ -16,7 +16,7 @@ export default function Header(): JSX.Element {
       <TouchableOpacity onPress={() => navigation.navigate("HOME")}>
         <LogoImg resizeMode="contain" source={images.logo} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("SUACONTA")}>
+      <TouchableOpacity onPress={() => navigation.navigate("YOURACCOUNT")}>
         {!signed ? (
           <Paragraph
             fontFamily="Poppins_600SemiBold"

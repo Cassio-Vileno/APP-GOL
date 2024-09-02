@@ -1,5 +1,5 @@
-import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import React from "react";
 import { Icon } from "../../components/atoms/Icon";
 import { Paragraph } from "../../components/atoms/Paragraph";
 import Row from "../../components/atoms/Row";

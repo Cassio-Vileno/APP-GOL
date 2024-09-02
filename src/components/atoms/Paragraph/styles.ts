@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { ParagraphProps } from '.';
-import { RFValue } from '../../../utils/normalize';
 import { theme } from '../../../theme/default.theme';
+import { RFValue } from '../../../utils/normalize';
 
 export const Container = styled.Text<ParagraphProps>`
   width: ${theme.paragraph.width};

@@ -19,6 +19,7 @@ export type RowProps = {
   gap?: number;
   jc?: "center" | "space-between" | "space-around" | "flex-start" | "flex-end";
   fd?: "column" | "column-reverse" | "row" | "row-reverse";
+  alignItems?: "center" | "flex-end" | "flex-start";
 
   children?: ReactNode;
 };

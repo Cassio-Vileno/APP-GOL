@@ -3,17 +3,18 @@ import { Controller, useForm } from "react-hook-form";
 
 import { Container, ContainerForm, Content } from "./styles";
 
-import ButtonPrimary from "../../components/molecules/ButtonPrimary";
+import { useNavigation } from "@react-navigation/native";
 import Checkbox from "../../components/atoms/Checkbox";
 import Row from "../../components/atoms/Row";
+import ButtonPrimary from "../../components/molecules/ButtonPrimary";
 import InputCalendar from "../../components/molecules/InputCalendar";
 import InputSelect from "../../components/molecules/InputSelect";
 import InputSelectCity from "../../components/molecules/InputSelectCity";
 import InputText from "../../components/molecules/InputText";
 import InputTravelers from "../../components/molecules/InputTravelers";
 import useDebounce from "../../hooks/useDebounce";
-import { LocaleService, LocaleType } from "../../services/locale.service";
 import { useDialog } from "../../hooks/useDialog";
+import { LocaleService, LocaleType } from "../../services/locale.service";
 
 export default function RoundTrip(): JSX.Element {
   const [promotionalCode, setPromotionalCode] = useState(false);
@@ -22,6 +23,7 @@ export default function RoundTrip(): JSX.Element {
   const [searchCity, setSearchCity] = useState("");
   const [locale, setLocale] = useState<LocaleType[]>([]);
   const debouncedSearchTerm = useDebounce(searchCity, 700);
+  const navigation = useNavigation<any>();
 
   const { openDialog, closeDialog } = useDialog();
 
@@ -53,14 +55,16 @@ export default function RoundTrip(): JSX.Element {
 
   const onSubmit = (data: any) => {
     console.log(data);
-    openDialog({
-      title: "Sucesso",
-      subtitle: "Busca feita com sucesso",
-      buttonText: "Ok",
-      buttonPress: () => {
-        closeDialog();
-      },
-    });
+    navigation.navigate("ListOfPassages");
+
+    // openDialog({
+    //   title: "Sucesso",
+    //   subtitle: "Busca feita com sucesso",
+    //   buttonText: "Ok",
+    //   buttonPress: () => {
+    //     closeDialog();
+    //   },
+    // });
   };
 
   return (
@@ -261,7 +265,8 @@ export default function RoundTrip(): JSX.Element {
               ) : null}
             </Row>
           </Row>
-          <ButtonPrimary onPress={handleSubmit(onSubmit)}>
+          <ButtonPrimary onPress={() => navigation.navigate("ListOfPassages")}>
+            {/* <ButtonPrimary onPress={handleSubmit(onSubmit)}> */}
             Buscar passagens
           </ButtonPrimary>
         </ContainerForm>

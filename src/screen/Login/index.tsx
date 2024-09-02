@@ -1,14 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { ButtonGhost } from "../../components/molecules/ButtonGhost";
-import ButtonPrimary from "../../components/molecules/ButtonPrimary";
 import { Paragraph } from "../../components/atoms/Paragraph";
 import Row from "../../components/atoms/Row";
+import { ButtonGhost } from "../../components/molecules/ButtonGhost";
+import ButtonPrimary from "../../components/molecules/ButtonPrimary";
 import InputEmail from "../../components/molecules/InputEmail";
 import InputPassword from "../../components/molecules/InputPassword";
 
-import { Icon } from "../../components/atoms/Icon";
 import { useAuth } from "../../hooks/useAuth";
 import { theme } from "../../theme/default.theme";
 import images from "../../utils/images";
@@ -98,7 +97,7 @@ export default function Login(): JSX.Element {
         <Row my={20}>
           <ButtonGhost
             color={theme.button.color.default}
-            onPress={() => navigation.navigate("SignUpOne")}
+            onPress={() => navigation.navigate("SignUp")}
           >
             <Paragraph color="#9D9FA0" fontFamily="Poppins_500Medium" size={15}>
               Não tem uma conta?{" "}
@@ -107,15 +106,6 @@ export default function Login(): JSX.Element {
           </ButtonGhost>
         </Row>
       </Content>
-      <Row>
-        <ButtonGhost
-          width="180px"
-          color={theme.button.color.default}
-          onPress={() => {}}
-        >
-          Gerenciar idioma <Icon size={18} name="chevron-right" />
-        </ButtonGhost>
-      </Row>
     </Container>
   );
 }

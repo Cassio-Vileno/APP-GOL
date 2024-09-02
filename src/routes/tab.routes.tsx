@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React, { useEffect, useState } from "react";
 import { Dimensions, Keyboard } from "react-native";
 import { useAuth } from "../hooks/useAuth";
 import Home from "../screen/Home";
@@ -104,7 +104,7 @@ export default function TabRoutes() {
           })}
         />
         <Tab.Screen
-          name="SUACONTA"
+          name="YOURACCOUNT"
           component={signed ? Profile : Login}
           options={{
             tabBarIcon: ({ size, color }) => {
